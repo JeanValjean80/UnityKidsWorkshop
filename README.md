@@ -17,4 +17,4 @@ Um direkt loszulegen, lade dir das Startprojekt auf deinen Computer herunter und
 
 | Kapitel | Thema |
 | ----- | ---- |
-| [Kapitel 1](/docs/00-start.md) | Installation von Unity und starten des Projekts |
+| [Kapitel 1](/docs/01-start.md) | Installation von Unity und starten des Projekts |
