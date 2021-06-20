@@ -1,7 +1,7 @@
 # Unity - Programmierworkshop fuer Kinder
 
 In diesem Workshop lernst Du, wie Du dein erstes eigenes 2D Jump & Run Spiel mit Unity erstellst. 
-Um das bestmoegliche Ergebnis zu erzielen, solltest du mindestens 12 Jahre alt sein und dich schon einmal mit dem Thema Programmierung beschaeftigt haben. 
+Um das bestmoegliche Ergebnis zu erzielen, solltest du mindestens 13 Jahre alt sein und dich schon einmal mit dem Thema Programmierung beschaeftigt haben. 
 
 
 ![Unity Kids Workshop](https://flamme.dev/GitHub/UnityKidsWorkshop/UnityKidsWorkshop-1.png)
