@@ -35,7 +35,7 @@ else
 
 Wenn du nun im Unity Editor deinen Spieler auswählst, kannst du rechts im Inspector unter deinem Player-Skript die gewünschte Geschwindigkeit "speed" einstellen. Setze sie zum Beispiel auf 5. Wenn du das Spiel nun startest, kann sich dein Spieler mithilfe der Pfeiltasten nach links und rechts bewegen. 
 
-![alt text](<img width="329" alt="Screenshot 2021-06-20 at 23 19 00" src="https://user-images.githubusercontent.com/75975986/122826402-5fb46880-d2e3-11eb-83d0-96a0bf2aa350.png"> "Edit player speed")
+![alt text](https://user-images.githubusercontent.com/75975986/122826402-5fb46880-d2e3-11eb-83d0-96a0bf2aa350.png "Edit player speed")
 
 ## Springen
 Für das Springen brauchen wir eine dritte Variable im Player-Skript, die Sprunggeschwindigkeit jump.
@@ -57,4 +57,4 @@ Wenn du nun im Unity Editor die Sprunggeschwindigkeit einstellst, kann dein Spie
 
 Der Spieler kann jetzt allerdings beliebig oft in der Luft springen. Wir wollen als nächstes dafür sorgen, dass er nur abspringen kann, wenn er sich auf dem Boden befindet. Dafür erstellen wir zuerst zwei neue Layer im Unity Editor.
 
-![alt text](<img width="349" alt="Screenshot 2021-06-21 at 22 39 10" src="https://user-images.githubusercontent.com/75975986/122826414-6511b300-d2e3-11eb-9ddc-e68373c2c766.png"> "Edit player speed")
+![alt text](https://user-images.githubusercontent.com/75975986/122826414-6511b300-d2e3-11eb-9ddc-e68373c2c766.png "Edit player speed")
