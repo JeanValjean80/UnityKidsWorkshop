@@ -57,9 +57,7 @@ Wenn du nun im Unity Editor die Sprunggeschwindigkeit einstellst, kann dein Spie
 
 Der Spieler kann jetzt allerdings beliebig oft in der Luft springen. Wir wollen als nächstes dafür sorgen, dass er nur abspringen kann, wenn er sich auf dem Boden befindet. Dafür erstellen wir zuerst zwei neue Layer im Unity Editor. Wähle dazu das Dropdown "Layers" über dem Inspector aus und klicke auf "Edit Layers...". Erstelle sowohl in der Liste "Sorting Layers" als auch in der Liste "Layers" jeweils einen Layer für den Ground und einen für den Player. Achte dabei darauf, dass der Player unter dem Ground Layer einsortiert ist.
 
-<img src="https://user-images.githubusercontent.com/75975986/122826414-6511b300-d2e3-11eb-9ddc-e68373c2c766.png" width="200">
-
-![edit layers](https://user-images.githubusercontent.com/75975986/122826414-6511b300-d2e3-11eb-9ddc-e68373c2c766.png "Edit layers") ![add layers](https://user-images.githubusercontent.com/75975986/122827711-00efee80-d2e5-11eb-8e23-ec234a2111e9.png "Add layers")
+<img src="https://user-images.githubusercontent.com/75975986/122826414-6511b300-d2e3-11eb-9ddc-e68373c2c766.png" width="500"> <img src="https://user-images.githubusercontent.com/75975986/122827711-00efee80-d2e5-11eb-8e23-ec234a2111e9.png" width="500">
 
 Ordne dem Spieler den Player-Layer zu, indem du den Spieler in der Hierarchy auswählst und den Layer im Inspector, wie auf dem nächsten Screenshot abgebildet, auswählst. Tue das selbe für die Grounds. Für die Grounds haben wir Prefabs erstellt, denen der Ground-Layer zugeordnet werden muss. Wähle dafür im Unity Editor im Project-Fenster unten den Ordner Prefabs aus. Dort findest du drei Grounds. Markiere den ersten Ground und setze den Layer auf "Ground". Möglicherweise wirst du gefragt, ob die Änderungen für alle child-Objekte übernommen werden sollen. Wähle dann "Ja" aus.
 
