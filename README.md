@@ -9,7 +9,7 @@ Um das bestmoegliche Ergebnis zu erzielen, solltest du mindestens 13 Jahre alt s
 
 ## Los gehts
 
-Um direkt loszulegen, lade dir das Startprojekt auf deinen Computer herunter und starte mit dem [ersten Kapitel](/docs/01-start.md)!
+Um direkt loszulegen, lade dir das ![Startprojekt](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.1) auf deinen Computer herunter und starte mit dem [ersten Kapitel](/docs/01-start.md)!
 
 ## Kapitel
 
@@ -18,3 +18,4 @@ Um direkt loszulegen, lade dir das Startprojekt auf deinen Computer herunter und
 | [Kapitel 1](/docs/01-start.md) | Installation von Unity und starten des Projekts |
 | [Kapitel 2](/docs/02-playermovement.md) | Bewegungen des Spielers
 | [Kapitel 3](/docs/03-playeranimation.md) | Animation des Spielers
+| [Kapitel 4](/docs/04-cameramovement.md) | Bewegung der Kamera
