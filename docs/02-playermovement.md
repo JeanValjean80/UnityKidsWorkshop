@@ -1,5 +1,5 @@
 # Bewegung des Spielers
-In diesem Kapitel werden wir die Bewegung des Spielers  in der Szene programmieren. 
+In diesem Kapitel werden wir die Bewegung des Spielers in der Szene programmieren. Du solltest das [Kapitel 1](/docs/01-start.md) bereits abgeschlossen haben.
 
 ## Laufen
 Öffne zuerst das Skript, das für den Spieler angelegt wurde (Player.cs). Hier müssen zwei Variablen erstellt werden: `speed` ist die Geschwindigkeit, mit der unser Spieler sich durch die Szene bewegen wird und `_rb` ist der Rigidbody, mit dessen Hilfe der Spieler auf physikalische Einwirkungen reagieren kann. 
@@ -68,3 +68,11 @@ Ordne dem Spieler den Player-Layer zu, indem du den Spieler in der Hierarchy aus
 <p align="center">
 <img src="https://user-images.githubusercontent.com/75975986/122829276-182fdb80-d2e7-11eb-8b96-a3fddf0d8c69.png" width="300">
 </p>
+
+Öffne nun wieder das Player-Skript. Hier legen wir nun drei neue Variablen an. `checkGround`
+
+```
+public Transform checkGround;
+public float checkGroundRadius;
+public LayerMask isGround; 
+```
