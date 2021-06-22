@@ -69,10 +69,45 @@ Ordne dem Spieler den Player-Layer zu, indem du den Spieler in der Hierarchy aus
 <img src="https://user-images.githubusercontent.com/75975986/122829276-182fdb80-d2e7-11eb-8b96-a3fddf0d8c69.png" width="300">
 </p>
 
-Öffne nun wieder das Player-Skript. Hier legen wir nun drei neue Variablen an. `checkGround`
+Öffne nun wieder das Player-Skript. Hier legen wir nun drei neue Variablen an. `checkGround` ist eine leere Form, die sich an den Füßen des Spielers befinden wird. Mit `checckGroundRadius` prüfen wir durch ein kleines Kreisobjekt, ob der Spieler den Ground berührt. `isGround` ist dafür da, um den Ground zu identifizieren.
 
 ```
 public Transform checkGround;
 public float checkGroundRadius;
 public LayerMask isGround; 
 ```
+
+Gehe zurück in den Unity Editor und erstelle ein leeres Unterobjekt unter dem Spieler, indem du in der Hierarchy auf den Spieler rechtsklickst und "Create Empty" auswählst. Nenne das leere Element "GroundCheck" und bewege es mit dem Move-Tool zu den Füßen des Spielers.
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/122996587-5393de00-d3ab-11eb-94ea-cbfb2ce93db1.png" height="400"><img src="https://user-images.githubusercontent.com/75975986/122997372-3d3a5200-d3ac-11eb-876d-619e81f5058a.png" height="400">
+</p>
+
+Nun befüllen wir unsere neuen Variablen. Wähle in der Hierarchy den Spieler aus. Setze im Inspector unter Player (Script) die Variable "Is Ground" auf Ground, "Check Ground Radius" auf 0.25 und ziehe dein neues Element "GroundCheck" in die Variable "Check Ground". So sollten die Variablen nun bei dir aussehen:
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/122998705-ab334900-d3ad-11eb-9331-634f5a6c7c33.png" width="300">
+</p>
+
+Nun noch einmal zurück in das Player-Skript. Setze eine neue Variable `grounded`. 
+
+```
+public bool grounded;
+```
+
+Erweitere die `Update()`-Methode um die das Setzen unserer neuen Variable. Hier prüfen wir, ob unser zuvor angelegtes Objekt (an den Füßen des Spielers) ein Objekt berührt, das den Layer Ground gesetzt hat. Füge folgenden Code am Anfang der `Update()`-Methode ein:
+
+```
+grounded = Physics2D.OverlapCircle(checkGround.position, checkGroundRadius, isGround);
+```
+
+Ändere außerdem die if-Condition für den Sprung, sodass beim Abspringen auch geprüft wird, ob grounded zutrifft. Der Code sollte dann so aussehen: 
+
+```
+if (Input.GetButtonDown("Jump") && grounded)
+{
+    _rb.velocity = new Vector2(_rb.velocity.x, jump);
+}
+```
+
+Dein Spieler kann sich nun horizontal durch die Szene bewegen und springen. Du findest die Musterlösung [hier](/docs/01-start.md) zum Runterladen. Ansonsten kannst du mit [nächsten Kapitel](/docs/next) weitermachen. :)
