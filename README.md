@@ -9,7 +9,7 @@ Um das bestmoegliche Ergebnis zu erzielen, solltest du mindestens 13 Jahre alt s
 
 ## Los gehts
 
-Um direkt loszulegen, lade dir das ![Startprojekt](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.1) auf deinen Computer herunter und starte mit dem [ersten Kapitel](/docs/01-start.md)!
+Um direkt loszulegen, lade dir das [Startprojekt](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.1) auf deinen Computer herunter und starte mit dem [ersten Kapitel](/docs/01-start.md)!
 
 ## Kapitel
 
