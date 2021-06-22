@@ -80,7 +80,7 @@ public LayerMask isGround;
 Gehe zurück in den Unity Editor und erstelle ein leeres Unterobjekt unter dem Spieler, indem du in der Hierarchy auf den Spieler rechtsklickst und "Create Empty" auswählst. Nenne das leere Element "GroundCheck" und bewege es mit dem Move-Tool zu den Füßen des Spielers.
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/75975986/122996587-5393de00-d3ab-11eb-94ea-cbfb2ce93db1.png" height="400"><img src="https://user-images.githubusercontent.com/75975986/122997372-3d3a5200-d3ac-11eb-876d-619e81f5058a.png" height="400">
+<img src="https://user-images.githubusercontent.com/75975986/122996587-5393de00-d3ab-11eb-94ea-cbfb2ce93db1.png" height="300"><img src="https://user-images.githubusercontent.com/75975986/122997372-3d3a5200-d3ac-11eb-876d-619e81f5058a.png" height="300">
 </p>
 
 Nun befüllen wir unsere neuen Variablen. Wähle in der Hierarchy den Spieler aus. Setze im Inspector unter Player (Script) die Variable "Is Ground" auf Ground, "Check Ground Radius" auf 0.25 und ziehe dein neues Element "GroundCheck" in die Variable "Check Ground". So sollten die Variablen nun bei dir aussehen:
