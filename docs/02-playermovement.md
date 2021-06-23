@@ -4,21 +4,21 @@ In diesem Kapitel werden wir die Bewegung des Spielers in der Szene programmiere
 ## Laufen
 Öffne zuerst das Skript, das für den Spieler angelegt wurde (Player.cs). Hier müssen zwei Variablen erstellt werden: `speed` ist die Geschwindigkeit, mit der unser Spieler sich durch die Szene bewegen wird und `_rb` ist der Rigidbody, mit dessen Hilfe der Spieler auf physikalische Einwirkungen reagieren kann. 
 
-```
+```csharp
 public float speed;    
 private Rigidbody2D _rb;
 ```
 
 In der `Start()`-Methode wird der Rigidbody initialisiert. Wir weisen `_rb` also die Komponente Rigidbody2D zu, die im Basisspiel in Unity Hub bereits an den Spieler gehängt wurde.
 
-```
+```csharp
 _rb = GetComponent<Rigidbody2D>();
 ```
 
 Die Bewegung implementieren wir in der `Update()`-Methode. Diese Methode wird mit jeder Aktualisierung des Screens ein Mal aufgerufen. 
 Für die Bewegung bauen wir eine bedingte Anweisung (if-Anweisung), in der wir die Bewegung des Rigidbody, die durch die Unity bereitgestellt wird, ansprechen.
 
-```
+```csharp
 if (Input.GetAxisRaw("Horizontal") > 0f)
 {
     _rb.velocity = new Vector2(speed, _rb.velocity.y);
@@ -42,13 +42,13 @@ Wenn du nun im Unity Editor deinen Spieler auswählst, kannst du rechts im Inspe
 ## Springen
 Für das Springen brauchen wir eine dritte Variable im Player-Skript, die Sprunggeschwindigkeit jump.
 
-```
+```csharp
 public float jump;
 ```
 
 In der Update()-Methode fügen wir eine weitere if-Anweisung hinzu, in der wir die vertikale Bewegung des Spielers ansprechen, wenn die Leertaste gedrückt wird.
 
-```
+```csharp
 if (Input.GetButtonDown("Jump"))
 {
     _rb.velocity = new Vector2(_rb.velocity.x, jump);
@@ -71,7 +71,7 @@ Ordne dem Spieler den Player-Layer zu, indem du den Spieler in der Hierarchy aus
 
 Öffne nun wieder das Player-Skript. Hier legen wir nun drei neue Variablen an. `checkGround` ist eine leere Form, die sich an den Füßen des Spielers befinden wird. Mit `checckGroundRadius` prüfen wir durch ein kleines Kreisobjekt, ob der Spieler den Ground berührt. `isGround` ist dafür da, um den Ground zu identifizieren.
 
-```
+```csharp
 public Transform checkGround;
 public float checkGroundRadius;
 public LayerMask isGround; 
@@ -91,7 +91,7 @@ Nun befüllen wir unsere neuen Variablen. Wähle in der Hierarchy den Spieler au
 
 Nun noch einmal zurück in das Player-Skript. Setze eine neue Variable `grounded`. 
 
-```
+```csharp
 public bool grounded;
 ```
 
@@ -103,7 +103,7 @@ grounded = Physics2D.OverlapCircle(checkGround.position, checkGroundRadius, isGr
 
 Ändere außerdem die if-Condition für den Sprung, sodass beim Abspringen auch geprüft wird, ob grounded zutrifft. Der Code sollte dann so aussehen: 
 
-```
+```csharp
 if (Input.GetButtonDown("Jump") && grounded)
 {
     _rb.velocity = new Vector2(_rb.velocity.x, jump);
