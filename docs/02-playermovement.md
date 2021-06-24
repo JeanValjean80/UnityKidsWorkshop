@@ -4,32 +4,32 @@ In diesem Kapitel werden wir die Bewegung des Spielers in der Szene programmiere
 ## Laufen
 Öffne zuerst das Skript, das für den Spieler angelegt wurde (Player.cs). Hier müssen zwei Variablen erstellt werden: `speed` ist die Geschwindigkeit, mit der unser Spieler sich durch die Szene bewegen wird und `_rb` ist der Rigidbody, mit dessen Hilfe der Spieler auf physikalische Einwirkungen reagieren kann. 
 
-```
+```csharp
 public float speed;    
 private Rigidbody2D _rb;
 ```
 
 In der `Start()`-Methode wird der Rigidbody initialisiert. Wir weisen `_rb` also die Komponente Rigidbody2D zu, die im Basisspiel in Unity Hub bereits an den Spieler gehängt wurde.
 
-```
+```csharp
 _rb = GetComponent<Rigidbody2D>();
 ```
 
 Die Bewegung implementieren wir in der `Update()`-Methode. Diese Methode wird mit jeder Aktualisierung des Screens ein Mal aufgerufen. 
 Für die Bewegung bauen wir eine bedingte Anweisung (if-Anweisung), in der wir die Bewegung des Rigidbody, die durch die Unity bereitgestellt wird, ansprechen.
 
-```
+```csharp
 if (Input.GetAxisRaw("Horizontal") > 0f)
 {
-    _rb.velocity = new Vector2(speed, _rb.velocity.y);
+    _rb.velocity = new Vector3(speed, _rb.velocity.y, 0f);
 }
 else if (Input.GetAxisRaw("Horizontal") < 0f)
 {
-    _rb.velocity = new Vector2(-speed, _rb.velocity.y);
+    _rb.velocity = new Vector3(-speed, _rb.velocity.y, 0f);
 }
 else
 {
-    _rb.velocity = new Vector2(0f, 0f);
+    _rb.velocity = new Vector3(0f, _rb.velocity.y, 0f);
 }
 ```
 
@@ -42,20 +42,20 @@ Wenn du nun im Unity Editor deinen Spieler auswählst, kannst du rechts im Inspe
 ## Springen
 Für das Springen brauchen wir eine dritte Variable im Player-Skript, die Sprunggeschwindigkeit jump.
 
-```
+```csharp
 public float jump;
 ```
 
 In der Update()-Methode fügen wir eine weitere if-Anweisung hinzu, in der wir die vertikale Bewegung des Spielers ansprechen, wenn die Leertaste gedrückt wird.
 
-```
+```csharp
 if (Input.GetButtonDown("Jump"))
 {
-    _rb.velocity = new Vector2(_rb.velocity.x, jump);
+    _rb.velocity = new Vector3(_rb.velocity.x, jump, 0f);
 }
 ```
 
-Wenn du nun im Unity Editor die Sprunggeschwindigkeit einstellst, kann dein Spieler auch springen. Du kannst die Sprunggeschwindigkeit genau wie die Laufgeschwindigkeit einstellen, indem du deinen Spieler auswählst und im Inspector rechts unter deinem Player-Skript die Variable "jump" zum Beispiel auf 30 setzt. 
+Wenn du nun im Unity Editor die Sprunggeschwindigkeit einstellst, kann dein Spieler auch springen. Du kannst die Sprunggeschwindigkeit genau wie die Laufgeschwindigkeit einstellen, indem du deinen Spieler auswählst und im Inspector rechts unter deinem Player-Skript die Variable "jump" zum Beispiel auf 10 setzt. 
 
 Der Spieler kann jetzt allerdings beliebig oft in der Luft springen. Wir wollen als nächstes dafür sorgen, dass er nur abspringen kann, wenn er sich auf dem Boden befindet. Dafür erstellen wir zuerst zwei neue Layer im Unity Editor. Wähle dazu das Dropdown "Layers" über dem Inspector aus und klicke auf "Edit Layers...". Erstelle sowohl in der Liste "Sorting Layers" als auch in der Liste "Layers" jeweils einen Layer für den Ground und einen für den Player. Achte dabei darauf, dass der Player unter dem Ground Layer einsortiert ist.
 
@@ -71,7 +71,7 @@ Ordne dem Spieler den Player-Layer zu, indem du den Spieler in der Hierarchy aus
 
 Öffne nun wieder das Player-Skript. Hier legen wir nun drei neue Variablen an. `checkGround` ist eine leere Form, die sich an den Füßen des Spielers befinden wird. Mit `checckGroundRadius` prüfen wir durch ein kleines Kreisobjekt, ob der Spieler den Ground berührt. `isGround` ist dafür da, um den Ground zu identifizieren.
 
-```
+```csharp
 public Transform checkGround;
 public float checkGroundRadius;
 public LayerMask isGround; 
@@ -86,12 +86,12 @@ Gehe zurück in den Unity Editor und erstelle ein leeres Unterobjekt unter dem S
 Nun befüllen wir unsere neuen Variablen. Wähle in der Hierarchy den Spieler aus. Setze im Inspector unter Player (Script) die Variable "Is Ground" auf Ground, "Check Ground Radius" auf 0.25 und ziehe dein neues Element "GroundCheck" in die Variable "Check Ground". So sollten die Variablen nun bei dir aussehen:
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/75975986/122998705-ab334900-d3ad-11eb-9331-634f5a6c7c33.png" width="300">
+<img src="https://user-images.githubusercontent.com/75975986/123169435-991edc80-d479-11eb-8e05-6098e3f7c90f.png" width="300">
 </p>
 
 Nun noch einmal zurück in das Player-Skript. Setze eine neue Variable `grounded`. 
 
-```
+```csharp
 public bool grounded;
 ```
 
@@ -103,10 +103,10 @@ grounded = Physics2D.OverlapCircle(checkGround.position, checkGroundRadius, isGr
 
 Ändere außerdem die if-Condition für den Sprung, sodass beim Abspringen auch geprüft wird, ob grounded zutrifft. Der Code sollte dann so aussehen: 
 
-```
+```csharp
 if (Input.GetButtonDown("Jump") && grounded)
 {
-    _rb.velocity = new Vector2(_rb.velocity.x, jump);
+    _rb.velocity = new Vector3(_rb.velocity.x, jump, 0f);
 }
 ```
 
