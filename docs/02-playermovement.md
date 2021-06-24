@@ -110,4 +110,4 @@ if (Input.GetButtonDown("Jump") && grounded)
 }
 ```
 
-Dein Spieler kann sich nun horizontal durch die Szene bewegen und springen. Du findest die Musterlösung [hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.2) zum Herunterladen. Ansonsten kannst du mit dem [nächsten Kapitel](/docs/next) weitermachen. :)
+Dein Spieler kann sich nun horizontal durch die Szene bewegen und springen. Du findest die Musterlösung [hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.2) zum Herunterladen. Ansonsten kannst du mit dem [nächsten Kapitel](/docs/03-animations.md) weitermachen. :)
