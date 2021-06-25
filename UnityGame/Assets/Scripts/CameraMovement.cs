@@ -35,4 +35,12 @@ public class CameraMovement : MonoBehaviour
         //transform.position = _targetPos;
         transform.position = Vector3.Lerp(transform.position, _targetPos, smoothness * Time.deltaTime);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("KillZone"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }

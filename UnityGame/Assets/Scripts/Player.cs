@@ -53,4 +53,12 @@ public class Player : MonoBehaviour
         _animator.SetFloat("Speed", Mathf.Abs(_rb.velocity.x));
         _animator.SetBool("Grounded", grounded);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("KillZone"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }
