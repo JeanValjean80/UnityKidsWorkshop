@@ -53,4 +53,4 @@ Wenn du im Unity Editor nun die Variable Smoothness zum Beispiel auf 1 setzt, be
 
 Damit hast du auch diese Kapitel geschafft! :) 
 
-[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.4) findest du die Musterlösung zum Herunterladen. Im [nächsten Kapitel]("docs/05-cleanup.md") machen wir ein paar kleine Aufräumarbeiten und Zusatzfunktionen an unserem Projekt.
+[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.4) findest du die Musterlösung zum Herunterladen. Im [nächsten Kapitel]("docs/05-cleanup.md") machen wir ein paar kleine Aufräumarbeiten und Zusatzfunktionen an unserem Projekt. 
