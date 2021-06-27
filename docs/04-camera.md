@@ -51,6 +51,6 @@ transform.position = Vector3.Lerp(transform.position, _targetPos, smoothness * T
 
 Wenn du im Unity Editor nun die Variable Smoothness zum Beispiel auf 1 setzt, bewegt sich die Kamera nun gleichmäßig mit dem Spieler mit.
 
-Damit hast du auch diese Kapitel geschafft! :) 
+Damit hast du auch dieses Kapitel geschafft! :) 
 
 [Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.4) findest du die Musterlösung zum Herunterladen. Im [nächsten Kapitel]("docs/05-cleanup.md") machen wir ein paar kleine Aufräumarbeiten und Zusatzfunktionen an unserem Projekt. 
