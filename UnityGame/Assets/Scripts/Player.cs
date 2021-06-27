@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float jump;
     public float checkGroundRadius;
     public bool grounded;
+    public Vector3 respawnPos;
 
 
     public Transform checkGround;
@@ -23,6 +24,8 @@ public class Player : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+
+        respawnPos = transform.position;
     }
 
     // Update is called once per frame
@@ -58,7 +61,12 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("KillZone"))
         {
-            gameObject.SetActive(false);
+            transform.position = respawnPos;
+        }
+
+        if (collision.CompareTag("Checkpoint"))
+        {
+            respawnPos = collision.transform.position;
         }
     }
 }
