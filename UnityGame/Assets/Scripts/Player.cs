@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     public Transform checkGround;
     public LayerMask isGround;
+    public LevelManager levelManager;
 
 
     private Rigidbody2D _rb;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         respawnPos = transform.position;
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -61,7 +63,7 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("KillZone"))
         {
-            transform.position = respawnPos;
+            levelManager.Respawn();
         }
 
         if (collision.CompareTag("Checkpoint"))
