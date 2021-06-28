@@ -467,6 +467,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallGround_1x5
       objectReference: {fileID: 0}
+    - target: {fileID: 6214619692562735046, guid: 97f308c4a3d9442e1831ca50fef8cadc, type: 3}
+      propertyPath: m_TagString
+      value: MovingPlatform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97f308c4a3d9442e1831ca50fef8cadc, type: 3}
 --- !u!1001 &260853341
