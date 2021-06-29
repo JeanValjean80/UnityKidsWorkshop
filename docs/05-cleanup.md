@@ -59,4 +59,4 @@ Um die Killzone zu identifizieren, arbeiten wir mit Tags. Damit ist es sehr einf
 
 Dein Player fällt nun nicht mehr ins bodenlose und damit ist auch dieses Kapitel geschafft! :) 
 
-[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.5) findest du die Musterlösung zum Herunterladen und [hier]("docs/06-levelelements.md") geht es weiter zum nächsten Kapitel.
+[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.5) findest du die Musterlösung zum Herunterladen und [hier]("docs/06-checkpoints.md") geht es weiter zum nächsten Kapitel.
