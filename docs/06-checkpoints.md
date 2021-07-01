@@ -81,13 +81,51 @@ void OnTriggerEnter2D(Collider2D collision)
     }
 ```
 
-Damit das Ganze funktioniert, muss der Player noch den richtigen Tag zugewiesen bekommen. Wechsle dafür in den Unity Editor und wähle den Player in der Hierarchy aus. Weise ihm im Inspector den Tag "Player" zu. 
+Damit das Ganze funktioniert, muss der Player noch den richtigen Tag zugewiesen bekommen. Wechsle dafür in den Unity Editor und wähle den Player in der Hierarchy aus. Weise ihm im Inspector den Tag "Player" zu. Wähle nun in der Hierarchy CheckpointFlag aus und erstelle im Inspector unter Tag > Add Tag... und nenne den neuen Tag "Checkpoint". Weise CheckpointFlag den Tag "Checkpoint" zu. 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/75975986/124032053-5e2c2400-d9f8-11eb-8e86-d9619dd878c3.png" width="200">
+<img src="https://user-images.githubusercontent.com/75975986/124184498-f0483100-dab9-11eb-9efd-ed5da91d2592.png" width="200">
 </p>
 
 Wenn du das Spiel nun startest, fängt die Fahne an zu wehen, sobald der Player hindurch läuft.
 
 ### Respawning
+
+Im letzen Kapitel haben wir den Player einfach deaktiviert, wenn er heruntergefallen ist. Nun wollen wir ihn nach dem Herunterfallen am Checkopoint wiederherstellen, wenn er diesen bereits aktiviert hat.
+
+Dafür bearbeiten wir das Player Script. Öffne das Script in Visual Studio Code und erstelle darin eine neue Variable, in der die Position der Fahne gespeichert wird.
+
+```csharp
+public Vector3 respawnPos;
+```
+
+In der `OnTriggerEnter2D()`-Methode fügen wir am Ende der Methode folgenden Code ein, sodass die Position an der der Spieler in die Fahne läuft in unserer neuen Variable gespeichert wird. 
+
+```csharp
+if (collision.CompareTag("Checkpoint"))
+   {
+       respawnPos = collision.transform.position;
+   }
+```
+
+Die erste if-Condition in der `OnTriggerEnter2D()`-Methode passen wir auch an, sodass der Player nicht mehr deaktiviert wird, sondern seine Position auf den Wert unserer Variable `respawnPos` gesetzt wird. Die if-Condition sollte nun folgendermaßen aussehen: 
+
+```csharp
+if (collision.CompareTag("KillZone"))
+   {
+       transform.position = respawnPos;
+   }
+```
+
+Erweitere die `Start()`-Methode um folgenden Code, sodass der Spieler an der Ausgangsposition wieder erscheint, falls er den Checkpoint noch nciht aktiviert hat.
+
+```csharp
+respawnPos = transform.position;
+```
+
+Der Spieler wird nach dem Herunterfallen nun am Checkpoint wiederhergestellt, falls er ihn schon aktiviert hat und sonst am Anfang des Spieles. Du kannst aus dem Checkpoint einen Prefab machen, sodass du das Element mehrmals wiederverwenden kannst. Ziehe dasfür einfach die CheckpointFlag aus der Hierarchy in den Ordner Prefabs.
+
+## Level Manager
+
+Damit wir uns später schnell und einfach eigene Level bauen können, implementieren wir nun einen Level Manager.
 
