@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public float timeToRespawn;
+    public int coinCount;
     public Player player;
 
     // Start is called before the first frame update
@@ -17,6 +18,11 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AddCoins(int addedCoins)
+    {
+        coinCount += addedCoins;
     }
 
     public void Respawn()
