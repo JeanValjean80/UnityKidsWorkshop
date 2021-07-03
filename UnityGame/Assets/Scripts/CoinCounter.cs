@@ -34,7 +34,7 @@ public class CoinCounter : MonoBehaviour
     void Start()
     {
         _levelManager = FindObjectOfType<LevelManager>();
-        _coin.sprite = this._coinSprite;
+        _coin.sprite = _coinSprite;
     }
 
     // Update is called once per frame
@@ -44,9 +44,9 @@ public class CoinCounter : MonoBehaviour
 
         if (points <= 0)
         {
-            _ones.sprite = this._digitSprites[0];
-            _tenth.sprite = this._digitSprites[0];
-            _hundreds.sprite = this._digitSprites[0];
+            _ones.sprite = _digitSprites[0];
+            _tenth.sprite = _digitSprites[0];
+            _hundreds.sprite = _digitSprites[0];
             return;
         }
 
@@ -54,8 +54,8 @@ public class CoinCounter : MonoBehaviour
         int tenthNumber = Mathf.RoundToInt((points - onesNumber) % 100) / 10;
         int hundredsNumber = Mathf.RoundToInt((points - tenthNumber * 10 - onesNumber) % 1000 / 100);
 
-        _ones.sprite = this._digitSprites[onesNumber];
-        _tenth.sprite = this._digitSprites[tenthNumber];
-        _hundreds.sprite = this._digitSprites[hundredsNumber];
+        _ones.sprite = _digitSprites[onesNumber];
+        _tenth.sprite = _digitSprites[tenthNumber];
+        _hundreds.sprite = _digitSprites[hundredsNumber];
     }
 }
