@@ -128,4 +128,59 @@ Der Spieler wird nach dem Herunterfallen nun am Checkpoint wiederhergestellt, fa
 ## Level Manager
 
 Damit wir uns später schnell und einfach eigene Level bauen können, implementieren wir nun einen Level Manager.
+Erstelle in der Hierarchy ein neues leeres Element mit einem Rechtsklick > "Create Empty". Erstelle außerdem ein neues Script in dem Ordner Scripty und nenne es "LevelManager". Hänge das neue Script an das neue Objekt indem du den LevelManager in der Hierarchy auswählst, im Inspector "Add Component" klickst und das LevelManager-Script suchst.
 
+Früher in dem Tutorial haben wir eine Respawn-Funktion eingebaut, sodass der Player wieder neu in der Szene erscheint, nachdem er runtergefallen ist. Diese Funktion holen wir nun in den LevelManager. Öffne das LevelManager-Script und erstelle zwei neue Variablen.
+
+```csharp
+    public float timeToRespawn;
+    public Player player;
+```
+
+Initialisiere den Player in der `Start()`-Methode. Diesmal nutzen wir hierfür nicht `GetComponent`, sondern `FindObjectOfType<Player>`, da wir mit dem LevelManager nicht innerhalb eines Objekts bleiben wollen.
+
+```csharp
+    player = FindObjectOfType<Player>();
+```
+
+Baue außerdem eine `Respawn()`-Methode, die dann aus dem LevelManager heraus aufgerufen werden kann. 
+
+```csharp
+    public void Respawn()
+    {
+        player.gameObject.SetActive(false);
+        player.transform.position = player.respawnPos;
+        player.gameObject.SetActive(true);
+    }
+```
+
+Öffne nun das Player-Script und erstelle eine neue Variable für den Level Manager.
+
+```csharp
+    public LevelManager levelManager;
+```
+
+Füge in der `Start()`-Methode nun eine Zeile hinzu, mit der du den Level Manager initialisierst.
+
+```csharp
+    levelManager = FindObjectOfType<LevelManager>();
+```
+
+Schreibe die `OnTriggerEnter2D()`-Methode so um, dass die Position zur Wiederherstellung nicht mehr manuell gesetzt wird, sondern über den LevelManager. Folgendermaßen sollte die Methode nun aussehen:
+
+```csharp
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("KillZone"))
+        {
+	        levelManager.Respawn();		
+        }
+
+        if (collision.CompareTag("Checkpoint"))
+        {
+            respawnPos = collision.transform.position;
+        }
+    }
+```
+
+Das Respawning sollte nun wie zuvor funktionieren. Allerdings geht die Wiederherstellung des Spielers aktuell ziemlich schnell, wenn er irgendwo herunter fällt. Die Kamera reagiert dann sehr hektisch, daher wollen wir das ganze ein bisschen verzögern. Dazu verwenden wir eine CoRoutine.
