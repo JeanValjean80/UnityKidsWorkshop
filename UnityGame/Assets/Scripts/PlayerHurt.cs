@@ -6,6 +6,8 @@ public class PlayerHurt : MonoBehaviour
 {
     private LevelManager _levelManager;
 
+    public int damage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,8 @@ public class PlayerHurt : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _levelManager.Respawn();
+            //_levelManager.Respawn();
+            _levelManager.PlayerHurt(damage);
         }
     }
 }
