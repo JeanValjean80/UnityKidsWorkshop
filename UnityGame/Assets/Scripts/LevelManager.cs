@@ -60,6 +60,7 @@ public class LevelManager : MonoBehaviour
 
         countHealth = maxHealth;
         _respawn = false;
+        UpdateHealth();
 
         player.transform.position = player.respawnPos;
         player.gameObject.SetActive(true);
@@ -68,5 +69,108 @@ public class LevelManager : MonoBehaviour
     public void PlayerHurt(int damage)
     {
         countHealth -= damage;
+        UpdateHealth();
+    }
+
+    public void UpdateHealth()
+    {
+        switch(countHealth)
+        {
+            case 10:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartFull;
+                heart4.sprite = heartFull;
+                heart5.sprite = heartFull;
+                return;
+
+            case 9:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartFull;
+                heart4.sprite = heartFull;
+                heart5.sprite = heartHalf;
+                return;
+
+            case 8:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartFull;
+                heart4.sprite = heartFull;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 7:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartFull;
+                heart4.sprite = heartHalf;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 6:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartFull;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 5:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartHalf;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 4:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartEmpty;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 3:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartHalf;
+                heart3.sprite = heartEmpty;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 2:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 1:
+                heart1.sprite = heartHalf;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 0:
+                heart1.sprite = heartEmpty;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            default:
+                heart1.sprite = heartEmpty;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+        }
     }
 }
