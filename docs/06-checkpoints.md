@@ -1,6 +1,6 @@
 # Checkpoints und neue Level Elemente
 
-In diesem Kapitel werden wir Checkpoints in unser Spiel einbauen, sodass unser Spiel an bestimmten Stellen neu startet, sobald er runtergefallen ist. Du solltest hier mit einem funktionsfähigen Stand aus dem [letzten Kapitel]("docs/05-cleanup.md") starten. Im Notfall kannst du das Musterprojekt [hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.5) nutzen.
+In diesem Kapitel werden wir Checkpoints in unser Spiel einbauen, sodass unser Spiel an bestimmten Stellen neu startet, sobald er runtergefallen ist. Du solltest hier mit einem funktionsfähigen Stand aus dem [letzten Kapitel](/docs/05-cleanup.md) starten. Im Notfall kannst du das Musterprojekt [hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.5) nutzen.
 
 ## Checkpoint in die Szene einfügen
 
@@ -248,4 +248,4 @@ Nun müssen wir noch den Box Collider um die Spikes setzen. Öffne den Unity Edi
 
 Der Spieler stirbt nun, wenn er in die Spikes reinläuft - das Kapitel ist hiermit abgeschlossen. 
 
-[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.6) findest du die Musterlösung zum Herunterladen und [hier]("docs/07-level_elements.md") geht es weiter zum nächsten Kapitel.
+[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.6) findest du die Musterlösung zum Herunterladen und [hier](/docs/07-level_elements.md) geht es weiter zum nächsten Kapitel.
