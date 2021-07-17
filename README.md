@@ -17,5 +17,7 @@ Um direkt loszulegen, lade dir das [Startprojekt](https://github.com/FrankFlamme
 | ----- | ---- |
 | [Kapitel 1](/docs/01-start.md) | Installation von Unity und Starten des Projekts |
 | [Kapitel 2](/docs/02-playermovement.md) | Bewegungen des Spielers
-| [Kapitel 3](/docs/03-playeranimation.md) | Animation des Spielers
-| [Kapitel 4](/docs/04-cameramovement.md) | Bewegung der Kamera
+| [Kapitel 3](/docs/03-animations.md) | Animation des Spielers
+| [Kapitel 4](/docs/04-camera.md) | Bewegung der Kamera
+| [Kapitel 5](/docs/05-cleanup.md) | Projekt aufräumen
+| [Kapitel 6](/docs/06-checkpoints.md) | Checkpoints und Level Manager
