@@ -1,6 +1,6 @@
 # Animation des Spielers
 
-In diesem Kapitel werden wir die Bewegung des Spielers animieren, sodass es realistischer aussieht, wenn er läuft und springt. Du solltest hier mit einem funktionsfähigen Stand aus dem [letzten Kapitel]("/docs/02-playermovement.md") starten. Im Notfall kannst du das Musterprojekt [hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.2) nutzen.
+In diesem Kapitel werden wir die Bewegung des Spielers animieren, sodass es realistischer aussieht, wenn er läuft und springt. Du solltest hier mit einem funktionsfähigen Stand aus dem [letzten Kapitel](/docs/02-playermovement.md) starten. Im Notfall kannst du das Musterprojekt [hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.2) nutzen.
 
 ## Verbindungen im Unity Editor
 
@@ -90,4 +90,4 @@ if (Input.GetAxisRaw("Horizontal") > 0f)
 
 Wenn du das Spiel nun in Unity startest, kann dein Player in beide Richtungen laufen und springen während seine Bewegung dementsprechend animiert wird. :)
 
-[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.3) findest du die Musterlösung aus diesem Kapitel. Im [nächsten Kapitel]("docs/04-camera.md") kümmern wir uns um die Kameraführung während des Spiels. 
+[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.3) findest du die Musterlösung aus diesem Kapitel. Im [nächsten Kapitel](docs/04-camera.md) kümmern wir uns um die Kameraführung während des Spiels. 
