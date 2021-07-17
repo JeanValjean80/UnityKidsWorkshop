@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public Transform checkGround;
     public LayerMask isGround;
     public LevelManager levelManager;
+    public GameObject stompBox;
 
 
     private Rigidbody2D _rb;
@@ -57,6 +58,15 @@ public class Player : MonoBehaviour
 
         _animator.SetFloat("Speed", Mathf.Abs(_rb.velocity.x));
         _animator.SetBool("Grounded", grounded);
+
+        if (_rb.velocity.y < 0)
+        {
+            stompBox.SetActive(true);
+        }
+        else
+        {
+            stompBox.SetActive(false);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
