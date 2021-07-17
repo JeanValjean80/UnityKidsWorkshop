@@ -1,6 +1,6 @@
 # Camera
 
-In diesem Kapitel werden wir die Bewegung der Kamera anpassen, sodass sie mit dem Spieler mitläuft. Du solltest hier mit einem funktionsfähigen Stand aus dem [letzten Kapitel]("docs/03-animations.md") starten. Im Notfall kannst du das Musterprojekt [hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.3) nutzen.
+In diesem Kapitel werden wir die Bewegung der Kamera anpassen, sodass sie mit dem Spieler mitläuft. Du solltest hier mit einem funktionsfähigen Stand aus dem [letzten Kapitel](/docs/03-animations.md) starten. Im Notfall kannst du das Musterprojekt [hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.3) nutzen.
 
 ## Let´s go
 
@@ -53,4 +53,4 @@ Wenn du im Unity Editor nun die Variable Smoothness zum Beispiel auf 1 setzt, be
 
 Damit hast du auch dieses Kapitel geschafft! :) 
 
-[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.4) findest du die Musterlösung zum Herunterladen. Im [nächsten Kapitel]("docs/05-cleanup.md") machen wir ein paar kleine Aufräumarbeiten und Zusatzfunktionen an unserem Projekt. 
+[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.4) findest du die Musterlösung zum Herunterladen. Im [nächsten Kapitel](/docs/05-cleanup.md) machen wir ein paar kleine Aufräumarbeiten und Zusatzfunktionen an unserem Projekt. 
