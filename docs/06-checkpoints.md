@@ -184,3 +184,68 @@ Schreibe die `OnTriggerEnter2D()`-Methode so um, dass die Position zur Wiederher
 ```
 
 Das Respawning sollte nun wie zuvor funktionieren. Allerdings geht die Wiederherstellung des Spielers aktuell ziemlich schnell, wenn er irgendwo herunter fällt. Die Kamera reagiert dann sehr hektisch, daher wollen wir das ganze ein bisschen verzögern. Dazu verwenden wir eine CoRoutine.
+
+Die CoRoutine implementieren wir im LevelManager-Skript. Füge dort eine CoRoutine ein und nenne sie `RespawnCo()`. Verschiebe anschließend den Inhalt aus der Funktion `Respawn()` in die CoRoutine. Erweitere den Code nach der Deaktivierung des Speielers um eine weitere Zeile, in der die Verzögerung des Respawning implementiert wird. So sieht die CoRoutine dann aus: 
+
+```csharp
+    public IEnumerator RespawnCo()
+    {
+        player.gameObject.SetActive(false);
+	yield return new WaitForSeconds(timeToRespawn);
+	
+        player.transform.position = player.respawnPos;
+        player.gameObject.SetActive(true);
+    }
+```
+
+Rufe die CoRoutine nun in der Methode `Respawn()`auf. 
+
+```csharp
+    public void Respawn()
+    {
+        StartCoroutine("RespawnCo");
+    }
+```
+
+Öffne nun wieder den Unity Editor, wähle den LevelManager in der Hierarchy aus und setze im Inspector den Wert von "Time To Respawn" auf 2. Die Kamerabewegung funktioniert nun etwas flüssiger beim Wiederherstellen des Spielers. 
+
+## Spikes
+
+Nun erstellen wir noch Spikes, die als Hindernis für den Spieler dienen. Öffne im Unity Editor den Ordner "Texttures" und öffne da die Tiles. Ziehe das Sprite für die Spikes (Tiles_69) in die Szene und nenne das Objekt in der Hierarchy "Spikes". Erstelle nun im Ordner Scripts ein neues C#-Script und nenne es "PlayerHurt". Wähle das Objekt Spikes in der Hierarchy aus und füge ihm das neue Script im Inspector über "Add component" hinzu.
+
+Öffne nun das neue Script in Visual Studio Code und ertselle eine neue Variable für den Level Manager über folgenden Code:
+
+```csharp
+    private LevelManager _levelManager;
+```
+
+Initialisiere den Level Manager in der `Start()`-Methode: 
+
+```csharp
+    void Start()
+    {
+        _levelManager = FindObjectOfType<LevelManager>();
+    }
+```
+
+Wenn der Spieler in die Spikes läuft, soll er sterben (bzw später ein Leben verlieren). Dafür implementieren wir die Methode `OnTriggerEnter2D()`, welche aktiv wird, wenn ein als Trigger gekennzeichneter Box Collider berührt wird. In dieser Methode soll das Respawning aus dem LevelManager aufgerufen werden, wenn der Spieler den Box Collider berührt. 
+
+```csharp
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            _levelManager.Respawn();
+        }
+    }
+```
+
+Nun müssen wir noch den Box Collider um die Spikes setzen. Öffne den Unity Editor und wähle das Objekt Spikes in der Hierarchy aus. Füge im Inspector über "Add Component" die neue Komponente "Box Collider 2D" hinzu und setze einen Haken bei "Is Trigger". Bearbeite nun die Größe des Colliders indem du auf den Button neben "Edit Collider" klickst. Setze den Collider etwas nach innen bei den Spikes, sodass der Spieler nich direkt stirbt, wenn er in der Nähe des Objektes ist. 
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126035040-5cfa788b-c80d-4e5e-9b4f-db38b872db48.png" width="400">
+</p>
+
+Der Spieler stirbt nun, wenn er in die Spikes reinläuft - das Kapitel ist hiermit abgeschlossen. 
+
+[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.6) findest du die Musterlösung zum Herunterladen und [hier]("docs/07-level_elements.md") geht es weiter zum nächsten Kapitel.
