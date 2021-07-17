@@ -89,3 +89,15 @@ Erstelle als erstes einen neuen Tag für die bewegliche Plattform, indem du das 
         }
     }
 ```
+
+## Sorting Layers
+
+Damit die Objekte in der Szene korrekt angeordnet werden, legen wir nun über das Menü im Inspector die „Sorting Layer“ fest. Wähle über dem Inspector Layers > Edit Layers aus und klappt die Sorting Layers aus. Die Reihenfolge der Layers geht von oben nach unten. Was oben in der Liste steht, ist weiter im Hintergrund. Was am weitesten unten in der Liste steht, ist in der Szene im Vordergrund zu sehen.
+
+Du müsstest dort drei Layer sehen. Falls einer deiner Layer "Ground" heißt, benenne diesen um in "World Items". Achtung: Die Umbenennung muss sowohl in Sorting Layers als auch in Layers darunter passieren. Ordne die Sorting Layer folgendermaßen an: World Items - Default - Player.
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126036858-010a4d79-8ecb-4743-a9b8-cf228cd3abf3.png" width="800">
+</p>
+
+Weise den Objekten und Prefabs anschließend die richtigen Sorting Layer zu, indem du sie in der Hierarchy wählst und die enprechenden Layers im Inspector unter Layer auswählst. 
