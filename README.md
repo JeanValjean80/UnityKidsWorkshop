@@ -21,3 +21,4 @@ Um direkt loszulegen, lade dir das [Startprojekt](https://github.com/FrankFlamme
 | [Kapitel 4](/docs/04-camera.md) | Bewegung der Kamera
 | [Kapitel 5](/docs/05-cleanup.md) | Projekt aufräumen
 | [Kapitel 6](/docs/06-checkpoints.md) | Checkpoints und Level Manager
+| [Kapitel 7](/docs/07-level_elements.md) | Neue Level-Elemente
