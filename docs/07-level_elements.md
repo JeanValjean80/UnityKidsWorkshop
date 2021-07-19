@@ -149,6 +149,10 @@ Schreibe außerdem die neue Funktion `AddCoin()`, in der der Wert der gesammelte
 
 Gehe nun wieder zurück in den Unity Editor, markiere alle Münzen in der Hierarchy und füge ihnen das Coin Script im Editor über "Add Component" hinzu. Setze den Coin Value auf 1. 
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126137542-da758d2b-417a-4b8d-a40f-74e91ee0cc83.png" width="400">
+</p>
+
 Wenn du das Spiel nun startest, verschwinden die Münzen nach dem Einsammeln und du kannst beobachten, wie sich der Coin Count im Level Manager erhöht. Kapitel 7 ist damit abgeschlossen.
 
 [Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.7) findest du die Musterlösung zum Herunterladen und [hier](/docs/08-ui_elements.md) geht es weiter zum nächsten Kapitel.
