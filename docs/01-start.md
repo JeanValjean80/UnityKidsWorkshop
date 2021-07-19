@@ -4,7 +4,7 @@ Um am Workshop teilzunehmen, benoetigst du die Software Unity und den Unity Hub.
 
 
 ## Installation von Unity
-Die Installation von Unity kannst du dir [hier](link) im Video anschauen.
+Die Installation von Unity kannst du dir [hier](https://youtu.be/y7b9GWvhgm0) im Video anschauen.
 
 
 # Weiter gehts!
