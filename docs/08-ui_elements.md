@@ -108,3 +108,110 @@ Wenn du möchtest, kannst du dir noch weitere Münzen aus dem Prefabs-Ordner in 
 Wenn du das Spiel nun startest, siehst du den Zähler für die Münzen links oben im Bild.
 
 ## Leben anzeigen
+
+Nun fügen wir noch eine Anzeige für die Gesundheit ein. Lege hierfür in der Hierarchy unter HUD ein neues leeres Objekt mit Rechtsklick > Create Empty an und nenne es "HealthMonitor". Lege unter dem Health Monitor fünf Image Objekte an mit Rechtsklick > UI > Image und nenne die Objekte Heart1 bis Heart5.
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126155330-eb5af344-f571-4c28-9837-9d64801a64cd.png" width="400">
+</p>
+
+Richte das Objekt "HealthMonitor" so aus, dass es oben in der Mitte des Screens ist. Wähle das Objekt dafür in der Hierarchy aus und setze die Einstellungen wie auf der folgenden Abbildung.
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126155735-343ae462-9fe5-4820-aaf0-fe72556e09f1.png" width="400">
+</p>
+
+Markiere nun alle fünf Heart Objekte unter dem Health Monitor und stelle im Inspector die folgendes ein:
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126156121-c68bfd92-30d0-48be-858b-7a7bc20335c3.png" width="400">
+</p>
+
+Setze die Objekte nun nebeneinander in der Health Monitor, indem du jedes Heart Objekt einzeln in der Hierarchy auswählst und die Position X folgendermaßen setzt: Heart1 = 0, Heart2 = 128, Heart3 = 256, Heart4 = 384, Heart5 = 512
+
+Markiere nun noch einmal alle Heart Objekte in der Hierarchy und weise allen im Inspector unter Source Image das Sprite Hud_10 (volles Herz) aus dem Ordner Textures zu. Aktiviere außerdem den Haken bei „Preserve Aspect“ unter "Raycast Padding". Damit stellst du sicher, dass das Herz-Sprite bei einer Größenänderung immer gleich in Höhe und Breite skaliert.
+
+Öffne nun das LevelManager Script in Visual Studio und lege für jedes der Herz-Bilder eine Variable an. 
+
+```csharp
+    public Image heart1;
+    public Image heart2;
+    public Image heart3;
+    public Image heart4;
+    public Image heart5;
+```
+
+Sollte noch ein Fehler auftreten, importiere die Unity.UI am Anfang des Scripts.
+
+```csharp
+using UnityEngine.UI;
+```
+
+Wir möchten jeweils Herzen verlieren, wenn wir einen Enemy treffen oder in einen Spike laufen. Dafür benötigen wir die Sprites mit dem halben und dem leeren Herzen. Weise diese wir auch im LevelManager zu.
+
+```csharp
+    public Sprite heartFull;  
+    public Sprite heartHalf;
+    public Sprite heartEmpty;
+```
+
+Erstelle zwei weitere Variablen für die maximale Gesundheit und das Zählen der Leben.
+
+```csharp
+    public int maxHealth;
+    public int countHealth;
+```
+
+Gehe nun wieder in den Unity Editor, wähle den Level Manager in der Hierarchy aus und weise die Images und Sprites zu. Die entsprechenden Images für Heart1 bis Heart5 findest du in der Hierarchy unter dem Health Monitor. Die Sprites findest du im Ordner Textures unter HUD. Setze Max Health auf 10, da wir fünf Herzen mit jeweils einer Option als halbes Herz haben.
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126158320-c9fd0f58-7aab-41a6-85e1-8a6dc33a87e7.png" width="400">
+</p>
+
+Gehe nun wieder zurück in das LevelManager Script in Visual Studio und initialisiere `countHealth` in der `Start()`-Methode. 
+
+```csharp
+        countHealth = maxHealth;
+```
+
+Erstelle außerdem eine neue Methode, um den Schaden an dem Spieler zu implementieren, indem der Schaden übergeben und von `countHealth` abgezogen wird.
+
+```csharp
+    public void PlayerHurt(int damage)
+    {
+        countHealth -= damage;
+    }
+```
+
+Öffne nun das PlayerHurt Script und erstelle dort eine neue Variable für den Schaden.
+
+```csharp
+    public int damage;
+```
+
+Passe nun die `OnTriggerEnter2D()`-Methode an. Kommentiere das Respawning erst einmal aus, sodass der Spieler bei einer Verletzung nicht sofort stirbt. Implementiere stattdessen die `PlayerHurt()`-Methode aus dem LevelManager und übergebe den Wert aus `damage`.
+
+```csharp
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            // _levelManager.Respawn();
+            _levelManager.PlayerHurt(damage);
+        }
+    }
+```
+
+Wechsle wieder in der Unity Editor und gebe den Objekten, die Schaden verursachen sollen, einen Wert für Damage indem du sie in der Hierarchy auswählst und den Wert im Inspector setzt. Setze ihn bei den Spikes beispielsweise auf 1, sodass bei einer Berührung ein halbes Herz abgezogen wird. 
+
+Wenn wir das Spiel nun starten, können wir beobachten, wie der Count Health im Level Manager sinkt, wenn der Spieler in die Spikes läuft. Allerdings geht Count Health gerade auch in den Minusbereich, wenn der Spieler oft genug durch die Spikes läuft. Erweitere die `Update()`-Mathode im PlayerHurt Script, sodass das Respawning ausgeführt wird, wenn Count Health auf 0 ist.
+
+```csharp
+    void Update()
+    {
+        if (countHealth <= 0)
+        {
+            Respawn();
+        }
+    }
+```
