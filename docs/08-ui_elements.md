@@ -62,3 +62,30 @@ Initialisiere das Coin-Sprite in der `Start()`-Methode:
         _coin.sprite = _coinSprite;
 ```
 
+Implementiere nun die `Update()`-Methode, indem du `points` auf den CoinCount-Wert des LevelManagers setzt. (Dort, wo wir im letzten Kapitel die Anzahl der Coins im Feld gezählt haben). Mit einer if-Condition initialisieren wir jetzt die UI und setzen die drei einzelnen Sprites auf die erste Stelle des Arrays.
+
+```csharp
+    void Update()
+    {
+        points = _levelManager.coinCount;
+
+        if (points <= 0)
+        {
+            _ones.sprite = _digitSprites[0];
+            _tenth.sprite = _digitSprites[0];
+            _hundreds.sprite = _digitSprites[0];
+            return;
+        }
+    }
+```
+
+Da in der UI die einzelnen Stellen der Zahl für sich stehen, passiert kein automatischer Übergang (zum Beispiel von 9 auf 10). Das lösen wir mit folgender Ergänzung in der Update()-Methode unter der if-Abfrage:
+
+```csharp
+        int onesNumber = Mathf.RoundToInt(points % 10);
+        int tenthNumber = Mathf.RoundToInt((points - onesNumber) % 100) / 10;
+        int hundredsNumber = Mathf.RoundToInt((points - tenthNumber * 10 - onesNumber) % 1000 / 100);
+```
+
+Die Operation `%` wird Modulo genannt und berechnet den Rest bei Division von Ganzzahlen. 
+
