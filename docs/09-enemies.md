@@ -12,7 +12,7 @@ Als erstes arbeiten wir mit der Schnecke, die wir bereits zu Beginn im Projekt h
 
 Nun bekommt die Schnecke einige Komponenten. Füge im Inspector einmal die Komponente "Ridigbody 2D" und zwei mal die Komponente "Box Collider 2D" hinzu. Setze beim Rigidbody den Haken bei "Freeze Rotation Z" unter "Constraints", damit die Schnecke bei einer Kollision nicht umkippt. 
 
-Der erste Box Collider dient der Schwerkraft und ist kein Trigger. Verknüpfe hier unter "Material" PlayerMat, sodass die Schnecke beim Herunterfallen nicht an der Seite einer Plattform hängen bleibt. Bearbeite die Größe des Colliders mit "Edit Collider", sodass er etwas folgende Größe hat:
+Der erste Box Collider dient der Schwerkraft und ist kein Trigger. Verknüpfe hier unter "Material" PlayerMat, sodass die Schnecke beim Herunterfallen nicht an der Seite einer Plattform hängen bleibt. Bearbeite die Größe des Colliders mit "Edit Collider", sodass er etwa folgende Größe hat:
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/75975986/126167988-c13c709c-558f-4bb8-8709-537823946e0c.png" width="400">
@@ -79,4 +79,38 @@ Fällt die Schnecke nun herunter, bleibt die trotzdem weiterhin aktiv. Für so e
 ```
 
 ## Pinkes Monster
+
+Als nächstes erstellen wir ein weiteres Enemy Objekt mit etwas anderen Eigenschaften. Dafür kannst zuerst weitere Plattformen in dein Spiel einbauen, indem du sie aus dem Prefabs Ordner in die Szene ziehst.
+
+Nun kannst du auf einer neuen Plattform ein bewegliches Element aufbauen. Erstelle einen neuen Enemy (zum Beispiel Enemies_38) indem du es aus dem Ordner Textures > Enemies in die Szene ziehst. Nenne das neue Objekt „PinkMonster“. Erstelle für das Monster wieder eine neue Animation und nenne sie „PinkMonsterWalk“. Wähle dafür das Objekt aus, erstelle die Animation über "Create" und speichere sie im Animations Ordner. Füge im Abstand von 10 Sekunden folgende Sprites in die Timeline ein: Enemies_38 - Enemies_43 - Enemies_38 - Enemies_43 - Enemies_38.
+
+Füge dem Monster im Inspector die Komponente Rigidbody 2D hinzu und setze den Haken bei "Freeze Rotation Z" unter "Constraints". Füge außerdem wieder zwei Mal die Komponente Box Collider 2D hinzu. Der erste Box Collider dient der Schwerkraft und ist kein Trigger. Bearbeite die Größe des Colliders mit "Edit Collider", sodass er etwa folgende Größe hat:
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126177668-c2d1aa33-5145-4a60-b5de-840989aace60.png" width="300">
+</p>
+
+Der zweite Box Collider dient dazu, dem Player einen Schaden zuzufügen und ist ein Trigger. Setze dafür den Haken bei "Is Trigger". Bearbeite die Größe des zweiten Box Colliders mit "Edit Collider" so, dass er etwa folgende Größe hat. 
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126177894-6e2940c0-af99-4cbc-989a-b50ec43873b3.png" width="300">
+</p>
+
+Wir wollen, dass unser Pink Monster sich zwischen zwei Punkten hin und her bewegt, ähnlich wie die Moving Platform, daher muss das Objekt mit dem Start- und Endpunkt zusammengefasst werden. Erstelle dafür in der Hierarchy ein neues leeres Objekt über Rechtsklick > Create Empty und nenne es "PinkEnemy". Mache PinkMonster zu einem Child von PinkEnemy, indem du es in der Hierarchy auf PinkEnemy ziehst. Erstelle zwei weitere leere Objekte unter PinkEnemy und nenne sie "Start" und "Stop".
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126178858-e76b94ea-1388-4f48-ad32-0b8038adcadc.png" width="400">
+</p>
+
+Gebe den zwei neuen Objekten wieder Icons über das Würfelsymbol im Inspector. Start bekommt einen grünen Punkt und Stop bekommt einen roten. 
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126179261-346137d0-82e9-436e-a1d8-ff173de3d03e.png" width="400">
+</p>
+
+Ordne Start- und Stoppunkt etwa wie in folgender Abbildung an. 
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126179658-c851fa97-390b-44c9-8b51-6b3087b11477.png" width="600">
+</p>
 
