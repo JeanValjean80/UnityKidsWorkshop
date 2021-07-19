@@ -105,7 +105,7 @@ Wir wollen, dass unser Pink Monster sich zwischen zwei Punkten hin und her beweg
 Gebe den zwei neuen Objekten wieder Icons über das Würfelsymbol im Inspector. Start bekommt einen grünen Punkt und Stop bekommt einen roten. 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/75975986/126179261-346137d0-82e9-436e-a1d8-ff173de3d03e.png" width="400">
+<img src="https://user-images.githubusercontent.com/75975986/126179261-346137d0-82e9-436e-a1d8-ff173de3d03e.png" width="200">
 </p>
 
 Ordne Start- und Stoppunkt etwa wie in folgender Abbildung an. 
@@ -113,4 +113,55 @@ Ordne Start- und Stoppunkt etwa wie in folgender Abbildung an.
 <p align="center">
 <img src="https://user-images.githubusercontent.com/75975986/126179658-c851fa97-390b-44c9-8b51-6b3087b11477.png" width="600">
 </p>
+
+Erstelle nun ein neues Script im Ordner Scripts und nenne es "PinkEnemy". Öffne das neue Script in Visual Studio und erstelle fünf neue Variablen. Zwei Variablen sind für den Start- und Endpunkt, eine Variable für die Geschwindigkeit. Außerdem brauchen wir unseren Rigidbody und eine Variable um zu prüfen, in welche Richtung der Gegner läuft. 
+
+```csharp
+    public Transform startPoint;
+    public Transform endPoint;
+    public float speed;
+
+    private Rigidbody2D _rb;
+    private bool _moveRight;
+```
+
+Initialisiere den Rigidbody in der `Start()`-Methode.
+
+```csharp
+    void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+    }
+```
+
+Passe die `Update()`-Methode so an, dass geprüft wird, in welche Richtung der Gegner läuft und die Bewegung gestartet wird.
+
+```csharp
+    void Update()
+    {
+        if (_moveRight && transform.position.x > endPoint.position.x)
+        {
+            _moveRight = false;
+        }
+        if (!_moveRight && transform.position.x < startPoint.position.x)
+        {
+            _moveRight = true;
+        }
+
+        if (_moveRight)
+        {
+            _rb.velocity = new Vector3(speed, _rb.velocity.y, 0f);
+        }
+        else
+        {
+            _rb.velocity = new Vector3(-speed, _rb.velocity.y, 0f);
+        }
+    }
+```
+
+Wechsle wieder in den Unity Editor und hänge das neue Script an das Objekt PinkMonster an (Achtung: Nicht an das übergeordnete Element PinkEnemy!). Ziehe den Start- und Stoppunkt auf die entsprechenden Felder und setze Speed zum Beispiel auf 2. 
+
+Weise PinkMonster nun auch noch das PlayerHurt Script zu und setze Damage zum Beispiel auf 1. 
+
+## Enemies zerstören
 
