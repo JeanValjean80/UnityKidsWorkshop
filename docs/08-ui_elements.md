@@ -204,7 +204,7 @@ Passe nun die `OnTriggerEnter2D()`-Methode an. Kommentiere das Respawning erst e
 
 Wechsle wieder in der Unity Editor und gebe den Objekten, die Schaden verursachen sollen, einen Wert für Damage indem du sie in der Hierarchy auswählst und den Wert im Inspector setzt. Setze ihn bei den Spikes beispielsweise auf 1, sodass bei einer Berührung ein halbes Herz abgezogen wird. 
 
-Wenn wir das Spiel nun starten, können wir beobachten, wie der Count Health im Level Manager sinkt, wenn der Spieler in die Spikes läuft. Allerdings geht Count Health gerade auch in den Minusbereich, wenn der Spieler oft genug durch die Spikes läuft. Erweitere die `Update()`-Mathode im PlayerHurt Script, sodass das Respawning ausgeführt wird, wenn Count Health auf 0 ist.
+Wenn wir das Spiel nun starten, können wir beobachten, wie der Count Health im Level Manager sinkt, wenn der Spieler in die Spikes läuft. Allerdings geht Count Health gerade auch in den Minusbereich, wenn der Spieler oft genug durch die Spikes läuft. Erweitere die `Update()`-Mathode im LevelManager Script, sodass das Respawning ausgeführt wird, wenn Count Health auf 0 ist.
 
 ```csharp
     void Update()
@@ -215,3 +215,175 @@ Wenn wir das Spiel nun starten, können wir beobachten, wie der Count Health im 
         }
     }
 ```
+
+Erweitere im LevelManager Script die `RespawnCo()`-Methode, damit die Gesundheit des Spielers nach dem Respawning wieder zurückgesetzt wird. Schreibe dazu folgenden Code unter die yield-Anweisung:
+
+```csharp
+       countHealth = maxHealth;
+```
+
+Damit das ganze nicht in einer Dauerschleife endet, wenn der Wert 0 ist, müssen wir noch sicherstellen, dass ein Respawn wirklich sinnvoll ist. Öffne dafür das LevelManager Script und erstelle eine neue Variable.
+
+```csharp
+    private bool _respawn;
+```
+
+Passe die Update Methode so an, dass das Respwaning nur ausgeführt wird, wenn nicht gerade schon ein Respawn stattfindet.
+
+```csharp
+    void Update()
+    {
+        if (countHealth <= 0 && !_respawn)
+        {
+            Respawn();
+            _respawn = true;
+        }
+    }
+```
+
+Füge in der `RespawnCo()`-Methode eine weitere Zeite ein mit der die neue Variable `_respawn` deaktiviert wird.
+
+```csharp
+    public IEnumerator RespawnCo()
+    {
+        player.gameObject.SetActive(false);
+        yield return new WaitForSeconds(timeToRespawn);
+        countHealth = maxHealth;
+        _respawn = false;
+
+        player.transform.position = player.respawnPos;
+        player.gameObject.SetActive(true);
+    }
+```
+
+Als nächstes wollen wir unsere neue Implementierung in der GUI einpflegen, sodass die Anzeige der Herzen sich mit einem Schaden auch verändert. Erstelle dafür die Funktion `UpdateHealth()` im LevelManager Script und implementiere mithilfe einer switch-Anweisung die verschiedenen Status des Herzen Anzeige.
+
+```csharp
+    public void UpdateHealth()
+    {
+        switch(countHealth)
+        {
+            case 10:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartFull;
+                heart4.sprite = heartFull;
+                heart5.sprite = heartFull;
+                return;
+
+            case 9:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartFull;
+                heart4.sprite = heartFull;
+                heart5.sprite = heartHalf;
+                return;
+
+            case 8:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartFull;
+                heart4.sprite = heartFull;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 7:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartFull;
+                heart4.sprite = heartHalf;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 6:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartFull;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 5:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartHalf;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 4:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartEmpty;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 3:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartHalf;
+                heart3.sprite = heartEmpty;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 2:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 1:
+                heart1.sprite = heartHalf;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            case 0:
+                heart1.sprite = heartEmpty;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+
+            default:
+                heart1.sprite = heartEmpty;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                heart4.sprite = heartEmpty;
+                heart5.sprite = heartEmpty;
+                return;
+        }
+    }
+```
+
+Diese Methode muss in der `RespawnCo()`-Funktion und in der `PlayerHurt()`-Funktion aufgerufen werden:
+
+```csharp
+    public IEnumerator RespawnCo()
+    {
+        player.gameObject.SetActive(false);
+        yield return new WaitForSeconds(timeToRespawn);
+        countHealth = maxHealth;
+        _respawn = false;
+        UpdateHealth();
+
+        player.transform.position = player.respawnPos;
+        player.gameObject.SetActive(true);
+    }
+    
+    public void PlayerHurt(int damage)
+    {
+        countHealth -= damage;
+        UpdateHealth();
+    }
+```
+
+Die Anzeige der Herzen verändert sich nun mit der Verletzung des Spielers und das Kapitel ist damit beendet. :)
+
+[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.8) findest du die Musterlösung zum Herunterladen und [hier](/docs/09-enemies.md) geht es weiter zum nächsten Kapitel.
