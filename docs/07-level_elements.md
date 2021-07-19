@@ -104,4 +104,51 @@ Weise den Objekten und Prefabs anschließend die richtigen Sorting Layer zu, ind
 
 ## Münzen einsammeln
 
+Als nächstes wollen wir die bereits vorbereiteten Coins einsammeln und zusammenrechnen. Markiere dafür alle 5 Coins in der Hierarchy und setzen den Haken „Is Trigger“ im Inspector beim CircleCollider2D. Erstelle ein neues Script im Ordner Scripts und nenne es "Coin".
 
+Öffne das neue Script in Visual Studio und erstelle eine neue Variable für den Level Manager, damit das Einsammeln der Münzen zentral funktioniert. Erstelle eine zweite Variable für den Wert der Münze (falls mehrere Münzen mit unterschiedlichen Werten im Spiel vorhanden sind).
+
+```csharp
+    private LevelManager _levelManager;
+    public int coinValue;
+```
+
+Instanziiere den Level Manager in der `Start()`-Methode.
+
+```csharp
+        _levelManager = FindObjectOfType<LevelManager>();
+```
+
+Füge außerdem eine `OnTriggerEnter2D()`-Methode hinzu, in der die Münzen deaktiviert werden, sobald der Spieler sie berührt.
+
+```csharp
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "Player")
+        {
+            _levelManager.AddCoins(coinValue);
+            gameObject.SetActive(false);
+        }
+    }
+```
+
+Die `AddCoins`-Funktion muss nun noch im Level Manager implementiert werden. Öffne dafür das LevelManager Script in Visual Studio und lege als erstes eine neue Variable für die Anzahl der gesammelten Münzen an. 
+
+```csharp
+    public int coinCount;
+```
+
+Schreibe außerdem die neue Funktion `AddCoin()`, in der der Wert der gesammelten Münze auf die schon gesammelten Münzen addiert wird. 
+
+```csharp
+    public void AddCoins(int addedCoins)
+    {
+        coinCount += addedCoins;
+    }
+```
+
+Gehe nun wieder zurück in den Unity Editor, markiere alle Münzen in der Hierarchy und füge ihnen das Coin Script im Editor über "Add Component" hinzu. Setze den Coin Value auf 1. 
+
+Wenn du das Spiel nun startest, verschwinden die Münzen nach dem Einsammeln und du kannst beobachten, wie sich der Coin Count im Level Manager erhöht. Kapitel 7 ist damit abgeschlossen.
+
+[Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.7) findest du die Musterlösung zum Herunterladen und [hier](/docs/08-ui_elements.md) geht es weiter zum nächsten Kapitel.
