@@ -34,7 +34,7 @@ Da wir sie aber manuell verknüpfen, nutzen wir `SerializeField`. Das Keyword `H
     private Image _ones;
 
     [SerializeField]
-    private Image _tenth;
+    private Image _tens;
 
     [SerializeField]
     private Image _hundreds;
@@ -72,7 +72,7 @@ Implementiere nun die `Update()`-Methode, indem du `points` auf den CoinCount-We
         if (points <= 0)
         {
             _ones.sprite = _digitSprites[0];
-            _tenth.sprite = _digitSprites[0];
+            _tens.sprite = _digitSprites[0];
             _hundreds.sprite = _digitSprites[0];
             return;
         }
@@ -83,9 +83,28 @@ Da in der UI die einzelnen Stellen der Zahl für sich stehen, passiert kein auto
 
 ```csharp
         int onesNumber = Mathf.RoundToInt(points % 10);
-        int tenthNumber = Mathf.RoundToInt((points - onesNumber) % 100) / 10;
-        int hundredsNumber = Mathf.RoundToInt((points - tenthNumber * 10 - onesNumber) % 1000 / 100);
+        int tensNumber = Mathf.RoundToInt((points - onesNumber) % 100) / 10;
+        int hundredsNumber = Mathf.RoundToInt((points - tensNumber * 10 - onesNumber) % 1000 / 100);
 ```
 
 Die Operation `%` wird Modulo genannt und berechnet den Rest bei Division von Ganzzahlen. 
 
+Weise der UI nun noch die entsprechenden Sprites zu. Ergänze dafür folgendes in der `Update()`-Methode:
+
+```csharp
+        _ones.sprite = _digitSprites[onesNumber];
+        _tens.sprite = _digitSprites[tensNumber];
+        _hundreds.sprite = _digitSprites[hundredsNumber];
+```
+
+Gehe nun wieder in den Unity Editor und hänge das neue Script an das Objekt "CoinCounter", das du in der Hierarchy unter dem HUD findest. Setze Max Points auf 999. Die Images unter "Coin Digits" sind die Elemente, die du in der Hierarchy unter dem CointCounter findest. Ziehe diese in die Felder. Die Sprites für die Digits und den Coin findest du im Ordner Textures. Lege in den Digit Sprites jeweils für jede Zahl von 0 bis 9 ein neues Element an und ziehe die entsprechenden Sprites aus Textures > HUD hinein.
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/75975986/126153841-c308a639-f9d1-4b29-a4ca-8ccbd0dd2a53.png" width="400">
+</p>
+
+Wenn du möchtest, kannst du dir noch weitere Münzen aus dem Prefabs-Ordner in die Szene ziehen. Achte dabei darauf, dass der Coin Prefab das Coin Script angefügt haben muss. 
+
+Wenn du das Spiel nun startest, siehst du den Zähler für die Münzen links oben im Bild.
+
+## Leben anzeigen
