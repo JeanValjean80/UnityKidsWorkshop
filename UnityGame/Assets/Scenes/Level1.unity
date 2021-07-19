@@ -2204,6 +2204,7 @@ MonoBehaviour:
   timeToRespawn: 2
   coinCount: 0
   player: {fileID: 0}
+  playerDied: {fileID: 9121720100560532030, guid: 884b957ba87d248debab2445b43036a0, type: 3}
   heart1: {fileID: 1779877594}
   heart2: {fileID: 1954578315}
   heart3: {fileID: 287492369}

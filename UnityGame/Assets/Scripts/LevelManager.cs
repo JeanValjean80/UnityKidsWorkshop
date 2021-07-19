@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
     public int coinCount;
     public Player player;
 
+    public GameObject playerDied;
+
     public Image heart1;
     public Image heart2;
     public Image heart3;
@@ -55,6 +57,8 @@ public class LevelManager : MonoBehaviour
     public IEnumerator RespawnCo()
     {
         player.gameObject.SetActive(false);
+
+        Instantiate(playerDied, player.transform.position, player.transform.rotation);
 
         yield return new WaitForSeconds(timeToRespawn);
 
