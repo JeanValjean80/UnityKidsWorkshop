@@ -1,12 +1,12 @@
 # UI Elemente 
 
-In diesem Kapitel fügen wir dem Spiel UI Elemente hinzu, sodass wir sehen, wie viele Münzen gesammelt wurden und wie viele Leben der Spieler noch hat. Du solltest hier mit einem funktionsfähigen Stand aus dem [letzten Kapitel](/docs/07-level_elements.md) starten. Im Notfall kannst du das Musterprojekt [hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.7) nutzen.
+In diesem Kapitel fügen wir dem Spiel UI Elemente hinzu, sodass wir sehen, wie viele Münzen gesammelt wurden und wie viele Leben der *Player* noch hat. Du solltest hier mit einem funktionsfähigen Stand aus dem [letzten Kapitel](/docs/07-level_elements.md) starten. Im Notfall kannst du das Musterprojekt [hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.7) nutzen.
 
 ## Münzen zählen
 
-Zuerst möchten wir, dass unsere gesammelten Münzen nun auch in der UI gezählt und angezeigt werden. Dafür erstellen wir ein neues Script „CoinCounter“ im Ordner Scripts.
+Zuerst möchten wir, dass unsere gesammelten Münzen nun auch in der UI gezählt und angezeigt werden. Dafür erstellen wir ein neues Script *CoinCounter* im Ordner Scripts.
 
-Öffne das neue Script in Visual Studio und erstelle eine neue Variable für den Level Manager. 
+Öffne das neue Script im Editor und erstelle eine neue Variable für den *LevelManager*. 
 
 ```csharp
     private LevelManager _levelManager;
@@ -15,11 +15,11 @@ Zuerst möchten wir, dass unsere gesammelten Münzen nun auch in der UI gezählt
 Instanziiere den LevelManager wieder in der `Start()`-Methode.
 
 ```csharp
-        _levelManager = FindObjectOfType<LevelManager>();
+    _levelManager = FindObjectOfType<LevelManager>();
 ```
 
-Da wir die Sprites für den Zähler auch mit dem Script verbinden wollen, erstellen wir hierfür auch Variablen. Nutze das Keyword `SerializeField`, um eine private Variable im Editor sichtbar zu machen. Wir wollen auf die Sprites nicht von überall zugreifen, deshalb sollten sie im Code auf private deklariert sein.
-Da wir sie aber manuell verknüpfen, nutzen wir `SerializeField`. Das Keyword `Header(„Digit Coin Sprites“)` dient der Anzeigefreundlichkeit im Editor und ist die Überschrift der Felder.
+Da wir die Sprites für den Zähler mit dem Script verbinden wollen, erstellen wir hierfür auch Variablen. Wir wollen auf die Sprites nicht von überall zugreifen, deshalb sollten sie im Code auf private deklariert sein. Um eine private Variable im Editor sichtbar zu machen, nutzen wir das Keyword `SerializeField`.
+Das Keyword `Header(„Digit Coin Sprites“)` dient der Anzeigefreundlichkeit im Editor und ist die Überschrift der Felder.
 
 ```csharp
     [Header("Digit Coin Sprites")]
@@ -43,7 +43,7 @@ Da wir sie aber manuell verknüpfen, nutzen wir `SerializeField`. Das Keyword `H
     private Image _coin;
 ```
 
-Vermutlich sind die Typen „Image“ in Visual Studio nun rot hinterlegt. Das liegt daran, dass die Implementierung der Unity.UI Klassen fehlt. Füge dafür folgendes an den Anfang des Scripts an.
+Vermutlich ist der Variablen-Typ „Image“ in Visual Studio nun rot hinterlegt. Das liegt daran, dass die Implementierung der Unity.UI Klassen fehlt. Füge dafür folgendes an den Anfang des Scripts an.
 
 ```csharp
 using UnityEngine.UI;
@@ -62,7 +62,7 @@ Initialisiere das Coin-Sprite in der `Start()`-Methode:
         _coin.sprite = _coinSprite;
 ```
 
-Implementiere nun die `Update()`-Methode, indem du `points` auf den CoinCount-Wert des LevelManagers setzt. (Dort, wo wir im letzten Kapitel die Anzahl der Coins im Feld gezählt haben). Mit einer if-Condition initialisieren wir jetzt die UI und setzen die drei einzelnen Sprites auf die erste Stelle des Arrays.
+Implementiere nun die `Update()`-Methode, indem du `points` auf den CoinCount-Wert des *LevelManagers* setzt. (Dort, wo wir im letzten Kapitel die Anzahl der Coins im Feld gezählt haben). Mit einer if-Condition initialisieren wir jetzt die UI und setzen die drei einzelnen Sprites auf die erste Stelle des Arrays.
 
 ```csharp
     void Update()
@@ -121,17 +121,17 @@ Richte das Objekt "HealthMonitor" so aus, dass es oben in der Mitte des Screens 
 <img src="https://user-images.githubusercontent.com/75975986/126155735-343ae462-9fe5-4820-aaf0-fe72556e09f1.png" width="400">
 </p>
 
-Markiere nun alle fünf Heart Objekte unter dem Health Monitor und stelle im Inspector die folgendes ein:
+Markiere nun alle fünf *Heart* Objekte unter dem *HealthMonitor* und stelle im Inspector folgendes ein:
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/75975986/126156121-c68bfd92-30d0-48be-858b-7a7bc20335c3.png" width="400">
 </p>
 
-Setze die Objekte nun nebeneinander in der Health Monitor, indem du jedes Heart Objekt einzeln in der Hierarchy auswählst und die Position X folgendermaßen setzt: Heart1 = 0, Heart2 = 128, Heart3 = 256, Heart4 = 384, Heart5 = 512
+Setze die *Heart* Objekte nun nebeneinander, indem du jedes Objekt einzeln in der Hierarchy auswählst und die Position X folgendermaßen setzt: Heart1 = 0, Heart2 = 128, Heart3 = 256, Heart4 = 384, Heart5 = 512
 
-Markiere nun noch einmal alle Heart Objekte in der Hierarchy und weise allen im Inspector unter Source Image das Sprite Hud_10 (volles Herz) aus dem Ordner Textures zu. Aktiviere außerdem den Haken bei „Preserve Aspect“ unter "Raycast Padding". Damit stellst du sicher, dass das Herz-Sprite bei einer Größenänderung immer gleich in Höhe und Breite skaliert.
+Markiere nun noch einmal alle *Heart* Objekte in der Hierarchy und weise allen im Inspector unter Source Image das Sprite Hud_10 (volles Herz) aus dem Ordner Textures zu. Aktiviere außerdem den Haken bei „Preserve Aspect“ unter "Raycast Padding". Damit stellst du sicher, dass das Sprite bei einer Größenänderung immer gleich in Höhe und Breite skaliert.
 
-Öffne nun das LevelManager Script in Visual Studio und lege für jedes der Herz-Bilder eine Variable an. 
+Öffne nun das *LevelManager* Script und lege für jedes der Herz-Bilder eine Variable an. 
 
 ```csharp
     public Image heart1;
@@ -147,7 +147,7 @@ Sollte noch ein Fehler auftreten, importiere die Unity.UI am Anfang des Scripts.
 using UnityEngine.UI;
 ```
 
-Wir möchten jeweils Herzen verlieren, wenn wir einen Enemy treffen oder in einen Spike laufen. Dafür benötigen wir die Sprites mit dem halben und dem leeren Herzen. Weise diese wir auch im LevelManager zu.
+Wir möchten jeweils Herzen verlieren, wenn wir in einen Spike laufen oder später mit einem *Enemy* (Gegner) zusammentreffen. Dafür benötigen wir die Sprites mit dem halben und dem leeren Herzen. Diese deklarieren wir auch im *LevelManager*.
 
 ```csharp
     public Sprite heartFull;  
@@ -162,19 +162,19 @@ Erstelle zwei weitere Variablen für die maximale Gesundheit und das Zählen der
     public int countHealth;
 ```
 
-Gehe nun wieder in den Unity Editor, wähle den Level Manager in der Hierarchy aus und weise die Images und Sprites zu. Die entsprechenden Images für Heart1 bis Heart5 findest du in der Hierarchy unter dem Health Monitor. Die Sprites findest du im Ordner Textures unter HUD. Setze Max Health auf 10, da wir fünf Herzen mit jeweils einer Option als halbes Herz haben.
+Gehe nun wieder in den Unity Editor, wähle den *LevelManager* in der Hierarchy aus und weise die Images und Sprites zu. Die entsprechenden Images für Heart1 bis Heart5 findest du in der Hierarchy unter dem *HealthMonitor*. Die Sprites findest du im Ordner Textures unter HUD. Setze Max Health auf 10, da wir fünf Herzen mit jeweils einer Option als halbes Herz haben.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/75975986/126158320-c9fd0f58-7aab-41a6-85e1-8a6dc33a87e7.png" width="400">
 </p>
 
-Gehe nun wieder zurück in das LevelManager Script in Visual Studio und initialisiere `countHealth` in der `Start()`-Methode. 
+Gehe nun wieder zurück in das *LevelManager* Script und initialisiere `countHealth` in der `Start()`-Methode. 
 
 ```csharp
         countHealth = maxHealth;
 ```
 
-Erstelle außerdem eine neue Methode, um den Schaden an dem Spieler zu implementieren, indem der Schaden übergeben und von `countHealth` abgezogen wird.
+Erstelle außerdem eine neue Methode, um den Schaden am *Player* zu implementieren, indem der Schaden übergeben und von `countHealth` abgezogen wird.
 
 ```csharp
     public void PlayerHurt(int damage)
@@ -183,13 +183,13 @@ Erstelle außerdem eine neue Methode, um den Schaden an dem Spieler zu implement
     }
 ```
 
-Öffne nun das PlayerHurt Script und erstelle dort eine neue Variable für den Schaden.
+Öffne nun das *PlayerHurt* Script und erstelle dort eine neue Variable für den Schaden.
 
 ```csharp
     public int damage;
 ```
 
-Passe nun die `OnTriggerEnter2D()`-Methode an. Kommentiere das Respawning erst einmal aus, sodass der Spieler bei einer Verletzung nicht sofort stirbt. Implementiere stattdessen die `PlayerHurt()`-Methode aus dem LevelManager und übergebe den Wert aus `damage`.
+Passe nun die `OnTriggerEnter2D()`-Methode an. Kommentiere das Respawning erst einmal aus, sodass der Spieler bei einer Verletzung nicht sofort stirbt. Implementiere stattdessen die `PlayerHurt()`-Methode aus dem *LevelManager* und übergebe den Wert aus `damage`.
 
 ```csharp
     void OnTriggerEnter2D(Collider2D collision)
@@ -202,9 +202,9 @@ Passe nun die `OnTriggerEnter2D()`-Methode an. Kommentiere das Respawning erst e
     }
 ```
 
-Wechsle wieder in der Unity Editor und gebe den Objekten, die Schaden verursachen sollen, einen Wert für Damage indem du sie in der Hierarchy auswählst und den Wert im Inspector setzt. Setze ihn bei den Spikes beispielsweise auf 1, sodass bei einer Berührung ein halbes Herz abgezogen wird. 
+Wechsel wieder in den Unity Editor und gebe den Objekten, die Schaden verursachen sollen, einen Wert für Damage indem du sie in der Hierarchy auswählst und den Wert im Inspector setzt. Setze ihn bei den *Spikes* beispielsweise auf 1, sodass bei einer Berührung ein halbes Herz abgezogen wird. 
 
-Wenn wir das Spiel nun starten, können wir beobachten, wie der Count Health im Level Manager sinkt, wenn der Spieler in die Spikes läuft. Allerdings geht Count Health gerade auch in den Minusbereich, wenn der Spieler oft genug durch die Spikes läuft. Erweitere die `Update()`-Mathode im LevelManager Script, sodass das Respawning ausgeführt wird, wenn Count Health auf 0 ist.
+Wenn wir das Spiel nun starten, können wir beobachten, wie der Count Health im *LevelManager* sinkt, wenn der *Player* in die *Spikes* läuft. Allerdings geht Count Health gerade noch in den Minusbereich, wenn der *Player* oft genug durch die *Spikes* läuft. Erweitere die `Update()`-Mathode im *LevelManager* Script, sodass das Respawning ausgeführt wird, wenn Count Health gleich "0" ist.
 
 ```csharp
     void Update()
@@ -216,13 +216,13 @@ Wenn wir das Spiel nun starten, können wir beobachten, wie der Count Health im 
     }
 ```
 
-Erweitere im LevelManager Script die `RespawnCo()`-Methode, damit die Gesundheit des Spielers nach dem Respawning wieder zurückgesetzt wird. Schreibe dazu folgenden Code unter die yield-Anweisung:
+Erweitere im *LevelManager* Script die `RespawnCo()`-Methode, damit die *Health* (Gesundheit) des *Player* nach dem Respawning wieder zurückgesetzt wird. Schreibe dazu folgenden Code unter die yield-Anweisung:
 
 ```csharp
        countHealth = maxHealth;
 ```
 
-Damit das ganze nicht in einer Dauerschleife endet, wenn der Wert 0 ist, müssen wir noch sicherstellen, dass ein Respawn wirklich sinnvoll ist. Öffne dafür das LevelManager Script und erstelle eine neue Variable.
+Damit das ganze nicht in einer Dauerschleife endet, wenn der Wert 0 ist, müssen wir noch sicherstellen, dass ein Respawn wirklich sinnvoll ist. Gehe dafür in das *LevelManager* Script und erstelle eine neue Variable.
 
 ```csharp
     private bool _respawn;
@@ -241,7 +241,7 @@ Passe die Update Methode so an, dass das Respwaning nur ausgeführt wird, wenn n
     }
 ```
 
-Füge in der `RespawnCo()`-Methode eine weitere Zeite ein mit der die neue Variable `_respawn` deaktiviert wird.
+Füge in der `RespawnCo()`-Methode eine weitere Zeile ein mit der die neue Variable `_respawn` deaktiviert wird.
 
 ```csharp
     public IEnumerator RespawnCo()
@@ -256,7 +256,7 @@ Füge in der `RespawnCo()`-Methode eine weitere Zeite ein mit der die neue Varia
     }
 ```
 
-Als nächstes wollen wir unsere neue Implementierung in der GUI einpflegen, sodass die Anzeige der Herzen sich mit einem Schaden auch verändert. Erstelle dafür die Funktion `UpdateHealth()` im LevelManager Script und implementiere mithilfe einer switch-Anweisung die verschiedenen Status des Herzen Anzeige.
+Als nächstes wollen wir unsere neue Implementierung in der UI einpflegen, sodass die Anzeige der Herzen sich mit einem Schaden auch verändert. Erstelle dafür die Funktion `UpdateHealth()` im *LevelManager* Script und implementiere mit Hilfe einer switch-Anweisung die Varianten der Herzen-Anzeige.
 
 ```csharp
     public void UpdateHealth()
@@ -384,6 +384,6 @@ Diese Methode muss in der `RespawnCo()`-Funktion und in der `PlayerHurt()`-Funkt
     }
 ```
 
-Die Anzeige der Herzen verändert sich nun mit der Verletzung des Spielers und das Kapitel ist damit beendet. :)
+Die Anzeige der Herzen verändert sich nun mit der Verletzung des *Player* und das Kapitel ist damit beendet. :)
 
 [Hier](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.8) findest du die Musterlösung zum Herunterladen und [hier](/docs/09-enemies.md) geht es weiter zum nächsten Kapitel.
