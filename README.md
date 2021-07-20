@@ -4,7 +4,7 @@ In diesem Workshop lernst Du, wie Du dein erstes eigenes 2D Jump & Run Spiel mit
 Um das bestmoegliche Ergebnis zu erzielen, solltest du mindestens 13 Jahre alt sein und dich schon einmal mit dem Thema Programmierung beschaeftigt haben. 
 
 Sieh dir auch gerne unser Teaser-Video an:
-<a href="https://www.youtube.com/watch?v=p6hpitw_MUc">
+<a href="https://www.youtube.com/watch?v=p6hpitw_MUc" target="_blank">
 ![Unity Kids Workshop](https://flamme.dev/GitHub/UnityKidsWorkshop/UnityKidsWorkshop-1.png)
 </a>
 
