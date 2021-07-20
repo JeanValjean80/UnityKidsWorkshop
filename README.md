@@ -13,6 +13,12 @@ Sieh dir auch gerne unser Teaser-Video an:
 
 Um direkt loszulegen, lade dir das [Startprojekt](https://github.com/FrankFlamme/UnityKidsWorkshop/releases/tag/0.1) auf deinen Computer herunter und starte mit dem [ersten Kapitel](/docs/01-start.md)!
 
+Du kannst dir auch hier nochmal ein Video zum Download und zur Ausführung des Startprojekts anschauen:
+<a href="https://www.youtube.com/watch?v=LzpCKV-ISOk" target="_blank">
+   <img src="https://img.youtube.com/vi/LzpCKV-ISOk/0.jpg">
+</a>
+
+
 ## Kapitel
 
 | Kapitel | Thema |
