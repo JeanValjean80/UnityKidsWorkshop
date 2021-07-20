@@ -22,3 +22,6 @@ Um direkt loszulegen, lade dir das [Startprojekt](https://github.com/FrankFlamme
 | [Kapitel 5](/docs/05-cleanup.md) | Projekt aufräumen
 | [Kapitel 6](/docs/06-checkpoints.md) | Checkpoints und Level Manager
 | [Kapitel 7](/docs/07-level_elements.md) | Neue Level-Elemente
+| [Kapitel 8](/docs/08-ui_elements.md) | UI-Elemente
+| [Kapitel 9](/docs/09-enemies.md) | Gegner
+| [Kapitel 10](/docs/10-bugfixes_export.md) | Fehlerbehebung und Export
