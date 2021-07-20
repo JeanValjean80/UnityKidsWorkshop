@@ -15,7 +15,7 @@ Um direkt loszulegen, lade dir das [Startprojekt](https://github.com/FrankFlamme
 
 Du kannst dir auch hier nochmal ein Video zum Download und zur Ausführung des Startprojekts anschauen:
 <a href="https://www.youtube.com/watch?v=LzpCKV-ISOk" target="_blank">
-   <img src="https://img.youtube.com/vi/LzpCKV-ISOk/0.jpg">
+   <img src="https://img.youtube.com/vi/y7b9GWvhgm0/0.jpg">
 </a>
 
 
