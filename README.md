@@ -33,3 +33,7 @@ Du kannst dir auch hier nochmal ein Video zum Download und zur Ausführung des S
 | [Kapitel 8](/docs/08-ui_elements.md) | UI-Elemente
 | [Kapitel 9](/docs/09-enemies.md) | Gegner
 | [Kapitel 10](/docs/10-bugfixes_export.md) | Fehlerbehebung und Export
+
+## Assets
+Die im Spiel verwendeten Assets sind von [kenney.nl](https://kenney.nl). 
+Schaut gerne mal vorbei, ihr findet dort viele weitere coole Grafikelemente. :-)
