@@ -3,7 +3,7 @@
 In this chapter we will adjust the movement of the camera so that it moves with the *player*. You should start with a working version from the [last chapter](/docs/en/03-animations.md). If necessary, you can use the sample project [here](https://github.com/JeanValjean80/UnityKidsWorkshop/releases/tag/0.3).
 
 ## Let´s go
-First, create a new script. To do this, go to the Scripts folder in the Project window of the Unity Editor, right-click and select Create > C# Script. Name the new script “CameraMovement”. It is important that you do not name the new script “Camera”, as Unity itself has a built-in function called “CameraMovement”. Open the script and create three variables to link the *player* and the camera. `target` is the object you want the camera to follow. `follow` is a value to determine the area around which the camera should move around the target. `_targetPos` is a private variable that should contain the position of the target object. 
+First, create a new script. To do this, go to the Scripts folder in the Project window of the Unity Editor, right-click and select Create > C# Script. Name the new script “CameraMovement”. It is important that you do not name the new script “Camera”, as Unity itself has a built-in function called "camera". Open the script and create three variables to link the *player* and the camera. `target` is the object you want the camera to follow. `follow` is a value to determine the area around which the camera should move around the target. `_targetPos` is a private variable that should contain the position of the target object. 
 
 ```csharp
 public GameObject target;
@@ -11,7 +11,7 @@ public float follow;
 private Vector3 _targetPos;
 ```
 
-Now attach the script to the camera. To do this, select the camera in the hierarchy and then click on “Add Component” in the Inspector. You can then enter “Camera Movement” in the search and select the script. You will then see your newly created variables in the Inspector. Set Target to the *Player* by simply dragging the *Player* from the hierarchy into the field behind “Target”. And set Follow to 5, for example, this value will later be added to the movement of the camera to move it a little further. 
+Now attach the script to the camera. To do this, select the camera in the hierarchy and then click on “Add Component” in the Inspector. You can then enter “Camera Movement” in the search and select the script. You will then see your newly created variables in the Inspector. Set "Target" to the *Player* by simply dragging the *Player* from the hierarchy into the field behind “Target”. And set Follow to 5, for example, this value will later be added to the movement of the camera to move it a little further. 
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/75975986/123543452-cce65480-d74e-11eb-8ae2-3c6111375b4b.png" width="400">
