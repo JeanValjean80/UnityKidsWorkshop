@@ -3,6 +3,10 @@ In this workshop you'll learn how to create your first 2D Jump & Run game with U
 In order to achieve the best possible result, you should be at least 13 years old and have already dealt with the topic of programming. 
 
 
+## Questions or need help?
+Visit my [Discord](https://discord.gg/MjtKTgbv7B) to get in contact.
+
+
 ## Let's go
 To get started right away, download the [Start project](https://github.com/JeanValjean80/UnityKidsWorkshop/releases/tag/0.1) to your computer and start with the [first chapter](/docs/en/01-start.md)!
 
@@ -34,6 +38,9 @@ Have a look, you will find many more cool graphic elements there. :-)
 # Unity - Programmierworkshop fuer Kinder
 In diesem Workshop lernst Du, wie Du dein erstes eigenes 2D Jump & Run Spiel mit Unity erstellst. 
 Um das bestmoegliche Ergebnis zu erzielen, solltest du mindestens 13 Jahre alt sein und dich schon einmal mit dem Thema Programmierung beschaeftigt haben. 
+
+## Hast du Fragen oder brauchst Hilfe?
+Schau gerne auf meinem [Discord](https://discord.gg/MjtKTgbv7B) vorbei.
 
 ## Los gehts
 Um direkt loszulegen, lade dir das [Startprojekt](https://github.com/JeanValjean80/UnityKidsWorkshop/releases/tag/0.1) auf deinen Computer herunter und starte mit dem [ersten Kapitel](/docs/de/01-start.md)!
